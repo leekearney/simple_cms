@@ -1,0 +1,169 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"city",
+				"city"
+			],
+			[
+				"font",
+				"font-family"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Lee/simple_cms/config/database.yml",
+		"/C/Users/Lee/simple_cms/app/controllers/application_controller.rb",
+		"/C/Users/Lee/simple_cms/app/views/demo/hello.html.erb",
+		"/C/Users/Lee/simple_cms/app/views/demo/index.html.erb",
+		"/C/Users/Lee/simple_cms/Gemfile",
+		"/C/Users/Lee/simple_cms/app/views/home/index.html.erb",
+		"/C/Users/Lee/simple_cms/config/routes.rb",
+		"/C/Users/Lee/simple_cms/db/migrate/20130902101341_create_users.rb",
+		"/C/Users/Lee/Desktop/food_finder/lib/guide.rb",
+		"/C/Users/Lee/Documents/simple_cms/config/database.yml",
+		"/C/Users/Lee/Documents/simple_cms/Gemfile",
+		"/C/Users/Lee/Desktop/food_finder/lib/support/number_helper.rb",
+		"/C/Users/Lee/Desktop/food_finder/init.rb",
+		"/C/Users/Lee/Desktop/food_finder/lib/restaurant.rb",
+		"/C/Users/Lee/Desktop/food_finder - with City/food_find - with City.sublime-workspace",
+		"/C/Users/Lee/Desktop/food_finder/support/number_helper.rb",
+		"/C/Users/Lee/Desktop/food_finder/food.sublime-workspace",
+		"/C/Users/Lee/Desktop/food_finder/food.sublime-project",
+		"/C/Users/Lee/Desktop/food_finder/support/string_extend.rb",
+		"/C/Users/Lee/work/demo/app/assets/stylesheets/application.css",
+		"/C/Users/Lee/work/demo/Gemfile",
+		"/C/Users/Lee/work/demo/app/controllers/say_controller.rb",
+		"/C/Users/Lee/Desktop/food_finder/guide.rb",
+		"/C/Users/Lee/Desktop/Ruby sandbox/methods.rb",
+		"/C/Users/Lee/Desktop/Ruby sandbox/test.rb",
+		"/C/Users/Lee/AppData/Local/Temp/Temp1_mysql2-master.zip/mysql2-master/lib/mysql2/version.rb",
+		"/C/RailsInstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/mysql2-0.3.12b6/ext/mysql2/extconf.rb"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"'\n",
+			"outpit"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 276.0,
+	"status_bar_visible": true
+}

@@ -10,3 +10,4 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
+ #lee this timestamps saves date and time in the application

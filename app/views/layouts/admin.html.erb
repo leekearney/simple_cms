@@ -6,7 +6,8 @@
 	<title>Simple CMS | <%= @page_title || 'Admin Area' %></title>
 	<meta name="author" content="Lee Kearney">
 
-	<%=stylesheet_link_tag('public', :media => 'all') %>
+	<%=stylesheet_link_tag('public', 'admin', :media => 'all') %>
+	<%= javascript_include_tag('application') %>
 
    
 </head>

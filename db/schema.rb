@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20130927103828) do
     t.integer  "subject_id"
     t.string   "permalink"
     t.integer  "position"
-    t.boolean  "visable",    :default => false
+    t.boolean  "visible",    :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
     t.string   "name"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20130927103828) do
     t.integer  "page_id"
     t.string   "name"
     t.integer  "position"
-    t.boolean  "visable",    :default => false
+    t.boolean  "visible",    :default => false
     t.string   "content"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false

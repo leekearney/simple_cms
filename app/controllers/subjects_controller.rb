@@ -71,5 +71,6 @@ def destroy
 		redirect_to(:action => 'list')
 
 	end
+	
 
 end

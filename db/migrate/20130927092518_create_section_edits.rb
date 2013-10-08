@@ -8,4 +8,9 @@ class CreateSectionEdits < ActiveRecord::Migration
     end
     add_index :section_edits, ['admin_user_id', 'section_id']
   end
+
+  def self.down
+  	drop_table :section_edits
+  end
+  
 end

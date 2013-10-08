@@ -4,8 +4,12 @@ class CreateSubjects < ActiveRecord::Migration
     t.string "name"
     t.integer "position"
     t.boolean "visible", :default => false
-    
-      t.timestamps
+    t.timestamps
     end
   end
-end
+
+  def self.down
+  	drop_table :subjects
+  end
+
+end  

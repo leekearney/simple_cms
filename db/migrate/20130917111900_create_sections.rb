@@ -11,4 +11,9 @@ class CreateSections < ActiveRecord::Migration
     end
     add_index("sections", "page_id")
   end
+
+  def self.down
+    drop_table :sections
+  end
+  
 end

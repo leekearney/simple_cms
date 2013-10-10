@@ -15,6 +15,7 @@ class SectionsController < ApplicationController
 	end
 
 	def new
+		@subject_count =Subject.count + 1
 		@section = Section.new(:name => 'default')
 	end
 
@@ -35,6 +36,7 @@ class SectionsController < ApplicationController
   end
 
 	def edit
+		@subject_count =Subject.count
 		@section = Section.find(params[:id])
   end
 
@@ -50,6 +52,7 @@ class SectionsController < ApplicationController
       redirect_to(:action => 'show', :id => @section.id)
     else
       #if save fails, redisplay the form so user can fix problems
+      @subject_count =Subject.count
       render('edit')
     end
   end

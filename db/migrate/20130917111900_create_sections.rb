@@ -6,6 +6,7 @@ class CreateSections < ActiveRecord::Migration
       t.integer "position"
       t.boolean "visible", :default => false
       t.string "content"
+      t.string "content_type"
 
       t.timestamps
     end

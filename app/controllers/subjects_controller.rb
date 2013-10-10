@@ -15,6 +15,7 @@ class SubjectsController < ApplicationController
 	end
 
 	def new
+		@subject_count =Subject.count + 1
 		@subject = Subject.new(:name => 'default')
 	end
 
@@ -30,12 +31,15 @@ class SubjectsController < ApplicationController
       redirect_to(:action => 'list')
     else
       #if save fails, redisplay the form so user can fix problems
+     @subject_count =Subject.count
       render('new')
     end
   end
 
 	def edit
+		@subject_count =Subject.count + 1
 		@subject = Subject.find(params[:id])
+		
   end
 
   def update
@@ -50,6 +54,7 @@ class SubjectsController < ApplicationController
       redirect_to(:action => 'show', :id => @subject.id)
     else
       #if save fails, redisplay the form so user can fix problems
+      @subject_count =Subject.count
       render('edit')
     end
   end

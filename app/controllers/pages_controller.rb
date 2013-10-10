@@ -16,6 +16,7 @@ class PagesController < ApplicationController
 	end
 
 	def new
+		@subject_count =Subject.count + 1
 		@page = Page.new(:name => 'default')
 
 	end
@@ -32,11 +33,13 @@ class PagesController < ApplicationController
 		redirect_to(:action => 'list')
 	else
 		#if save fails, redisplay the form so user can fix problems
+		@subject_count =Subject.count
 		render('new')
 	end
 end
 
 	def edit
+		@subject_count =Subject.count
 		@page = Page.find(params[:id])
 
 end
@@ -53,6 +56,7 @@ def update
 		redirect_to(:action => 'show', :id => @page.id)
 	else
 		#if save fails, redisplay the form so user can fix problems
+		@subject_count =Subject.count
 		render('edit')
 	end
 end

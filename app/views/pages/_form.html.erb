@@ -1,18 +1,24 @@
-<table summary="page detail view">
+<%= error_messages_for(@page) %>
+
+<table summary="page from fields">
   <tr>
-    <th>Name</th>
+    <th><%= f.label(:subject_id) %></th>
+    <td><%= f.text_field(:subject_id) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:name) %></th>
     <td><%= f.text_field(:name) %></td>
   </tr>
   <tr>
-    <th>Permalink</th>
+    <th><%= f.label(:permalink) %></th>
     <td><%= f.text_field(:permalink) %></td>
   </tr>
   <tr>
-    <th>Position</th>
-    <td><%= f.text_field(:position) %></td>
+    <th><%= f.label(:position) %></th>
+    <td><%= f.select(:position, 1..@subject_count) %></td>
   </tr>
   <tr>
-    <th>Visible</th>
-    <td><%= f.text_field(:visible) %></td>
+    <th><%= f.label(:visible) %></th>
+    <td><%= f.check_box(:visible) %></td>
   </tr>
 </table>

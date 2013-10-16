@@ -1,13 +1,15 @@
 class PagesController < ApplicationController
   layout 'admin'
 
+  before_filter :confirm_logged_in
+  before_filter :find_subject
   def index
     list
     render('list')
   end
 
   def list
-    @pages = Page.order("pages.position ASC")
+    @pages = Page.sorted.where(:subject_id => @subject.id)
   end
 
 	def show
@@ -16,8 +18,9 @@ class PagesController < ApplicationController
 	end
 
 	def new
-		@subject_count =Subject.count + 1
-		@page = Page.new(:name => 'default')
+		@page = Page.new(:subject_id => @subject.id)
+		@page_count = @Subject.pages.size + 1
+		@subjects = Subject.order('position ASC')
 
 	end
 
@@ -30,19 +33,21 @@ class PagesController < ApplicationController
 
 		#if save succeeds, redirect to the list action
 		flash[:notice] = "Page created."
-		redirect_to(:action => 'list')
+		redirect_to(:action => 'list', :subject_id => @page.subject_id)
 	else
 		#if save fails, redisplay the form so user can fix problems
-		@subject_count =Subject.count
+		@page_count = @subject.pages.size + 1
+		@subjects = Subject.order('position ASC')
 		render('new')
 	end
 end
 
 	def edit
-		@subject_count =Subject.count
 		@page = Page.find(params[:id])
+		@page_count = @subject.pages.size
+		@subjects = Subject.order('position ASC')
+	end
 
-end
 
 def update
 #find ojject using form paramaters
@@ -53,10 +58,11 @@ def update
 
 		#if save succeeds, redirect to the list action
 		flash[:notice] = "Page Updated."
-		redirect_to(:action => 'show', :id => @page.id)
+		redirect_to(:action => 'show', :id => @page.id, :subject_id => @page.subject_id)
 	else
 		#if save fails, redisplay the form so user can fix problems
-		@subject_count =Subject.count
+		@page_count = @subject.pages.size
+		@subjects = Subject.order('position ASC')
 		render('edit')
 	end
 end
@@ -69,8 +75,16 @@ def destroy
 		@page = Page.find(params[:id])
 		@page.destroy
 		flash[:notice] = "Page Destroyed."
-		redirect_to(:action => 'list')
+		redirect_to(:action => 'list', :subject_id => @subject.id)
 
 	end
+
+	private
+
+	def find_subject
+		if params[:subject_id]
+			@subject = Subject.find_by_id(params[:subject_id])
+	end
 	
+end
 end

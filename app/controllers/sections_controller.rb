@@ -1,13 +1,15 @@
 class SectionsController < ApplicationController
 	layout 'admin'
 
+	before_filter :confirm_logged_in
+
 	def index
 		list
 		render('list')
 	end
 
 	def list
-		@sections = Section.order("sections.position ASC")
+		@sections = Section.sorted.where(:page_id => @page.id)
 	end
 
 	def show
@@ -15,14 +17,16 @@ class SectionsController < ApplicationController
 	end
 
 	def new
-		@subject_count =Subject.count + 1
-		@section = Section.new(:name => 'default')
+		@section = Section.new(:page_id => @page.id)
+		@section_count = @page.sections.size + 1
+		@pages = Page.order('position ASC')
+
 	end
 
 	def create
 		#instantiste a new ojject using form paramaters
 		@section = Section.new(params[:section])
-
+		@section_count = @page.sections.size + 1
 		#save the object
 		if @section.save
 
@@ -31,13 +35,16 @@ class SectionsController < ApplicationController
       redirect_to(:action => 'list')
     else
       #if save fails, redisplay the form so user can fix problems
+      @section_count = @page.sections.size + 1
+      @pages = Page.order('position ASC')
       render('new')
     end
   end
 
 	def edit
-		@subject_count =Subject.count
 		@section = Section.find(params[:id])
+		@section_count = @page.sections.size
+		@pages = Page.order('position ASC')
   end
 
   def update
@@ -52,7 +59,8 @@ class SectionsController < ApplicationController
       redirect_to(:action => 'show', :id => @section.id)
     else
       #if save fails, redisplay the form so user can fix problems
-      @subject_count =Subject.count
+      @section_count = @page.sections.size
+      @pages = Page.order('position ASC')
       render('edit')
     end
   end
@@ -66,6 +74,12 @@ class SectionsController < ApplicationController
 		@section.destroy
 		flash[:notice] = "Section Destroyed."
 		redirect_to(:action => 'list')
+	end
+
+	def find_page
+		if params[:page_id]
+			@page = Page.find_by_id(params[:page_id])
+		end
 	end
 
 end

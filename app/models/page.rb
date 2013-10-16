@@ -10,4 +10,8 @@ class Page < ActiveRecord::Base
   #use presence with length to disallow spaces
   validates_uniqueness_of :permalink
 
+  scope :visible, where(:visible => true)
+  scope :invisible, where(:visible => false)
+  scope :sorted, order('subjects.position ASC')
+
 end

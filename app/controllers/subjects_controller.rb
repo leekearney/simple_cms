@@ -1,6 +1,8 @@
 class SubjectsController < ApplicationController
 	layout 'admin'
 
+	before_filter :confirm_logged_in
+	
 	def index
 		list
 		render('list')
@@ -15,8 +17,8 @@ class SubjectsController < ApplicationController
 	end
 
 	def new
-		@subject_count =Subject.count + 1
-		@subject = Subject.new(:name => 'default')
+		@subject = Subject.new
+		@subject_count = Subject.count + 1
 	end
 
 	def create

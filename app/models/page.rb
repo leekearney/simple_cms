@@ -12,6 +12,6 @@ class Page < ActiveRecord::Base
 
   scope :visible, where(:visible => true)
   scope :invisible, where(:visible => false)
-  scope :sorted, order('subjects.position ASC')
+  scope :sorted, order('pages.position ASC')
 
 end

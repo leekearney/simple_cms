@@ -1,6 +1,6 @@
 <% @page_title = "Pages List" %>
 
-<%= link_to("<<Back to Subject List", {:controller => "subjects", :action => 'list'}, :class =>'back-link') %>
+<%= link_to("<<Back to subject List", {:controller => "subjects", :action => 'list'}, :class =>'back-link') %>
 
 <div class="page list">
   <h2>Page</h2>
@@ -18,7 +18,7 @@
       <tr>
         <td><%= page.position %></td>
         <td><%= page.name %></td>
-        <td  class="center"><%= status_tag(page.visible) %></td>td class="center"
+        <td  class="center"><%= status_tag(page.visible) %></td>
         <td  class="center"><%= page.sections.size %></td>
         <td  class="actions">
           <%= link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'action show') %>

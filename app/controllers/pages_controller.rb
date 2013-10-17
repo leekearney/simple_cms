@@ -19,7 +19,7 @@ class PagesController < ApplicationController
 
 	def new
 		@page = Page.new(:subject_id => @subject.id)
-		@page_count = @Subject.pages.size + 1
+		@page_count = Page.count + 1
 		@subjects = Subject.order('position ASC')
 
 	end
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
 		redirect_to(:action => 'list', :subject_id => @page.subject_id)
 	else
 		#if save fails, redisplay the form so user can fix problems
-		@page_count = @subject.pages.size + 1
+		@page_count = Page.count + 1
 		@subjects = Subject.order('position ASC')
 		render('new')
 	end
@@ -61,7 +61,7 @@ def update
 		redirect_to(:action => 'show', :id => @page.id, :subject_id => @page.subject_id)
 	else
 		#if save fails, redisplay the form so user can fix problems
-		@page_count = @subject.pages.size
+		@page_count = Page.count
 		@subjects = Subject.order('position ASC')
 		render('edit')
 	end

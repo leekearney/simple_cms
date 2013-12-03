@@ -1,6 +1,11 @@
+require 'position_mover'
 class Page < ActiveRecord::Base
-  belongs_to :subject
+
+  include PositionMover
+
+  belongs_to :page
   has_many :sections
+  #has_many :images
   has_and_belongs_to_many :editors, :class_name => "AdminUser"
 
   validates_presence_of :name
@@ -14,4 +19,10 @@ class Page < ActiveRecord::Base
   scope :invisible, where(:visible => false)
   scope :sorted, order('pages.position ASC')
 
+
+private
+
+def position_scope
+  "pages.subject_id = #{subject_id.to_i}"
+end
 end

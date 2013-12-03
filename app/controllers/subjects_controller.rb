@@ -3,6 +3,10 @@ class SubjectsController < ApplicationController
 
 	before_filter :confirm_logged_in
 	
+  def login
+
+  end
+
 	def index
 		list
 		render('list')
@@ -22,11 +26,13 @@ class SubjectsController < ApplicationController
 	end
 
 	def create
+		new_position = params[:subject].delete(:position)
 		#instantiste a new ojject using form paramaters
 		@subject = Subject.new(params[:subject])
 
 		#save the object
 		if @subject.save
+		  @subject.move_to_position(new_position)
 
       #if save succeeds, redirect to the list action
       flash[:notice] = "Subject created."
@@ -45,12 +51,13 @@ class SubjectsController < ApplicationController
   end
 
   def update
+
     #find ojject using form paramaters
 		@subject = Subject.find(params[:id])
-
+		new_position = params[:subject].delete(:position)
 		#save the object
 		if @subject.update_attributes(params[:subject])
-
+			@subject.move_to_position(new_position)
       #if save succeeds, redirect to the list action
       flash[:notice] = "Subject Updated."
       redirect_to(:action => 'show', :id => @subject.id)
@@ -66,10 +73,18 @@ class SubjectsController < ApplicationController
 	end
 
   def destroy
-		@subject = Subject.find(params[:id])
-		@subject.destroy
+		subject = Subject.find(params[:id])
+		subject.move_to_position(nil)
+		subject.destroy
 		flash[:notice] = "Subject Destroyed."
 		redirect_to(:action => 'list')
 	end
+	def logout
+  	session[:user_id] = nil
+  		session[:username] = nil
+  	flash[:notice] = "You have been Logged out .......Boom "
+  	redirect_to(:action => "login")
+  end
 
+ 
 end

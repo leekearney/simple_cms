@@ -1,0 +1,32 @@
+<% @page_title = "Images List" %>
+
+<%= link_to("<<Back to subject List", {:controller => "subjects", :action => 'list'}, :class =>'back-link') %>
+
+<div class="image list">
+  <h2>Images Displayed</h2>
+
+  <%= link_to("Add New image", {:action => 'new'}, :class => 'action new') %>
+
+  <table class="listing" summary="image list">
+    <tr class="header">
+      <th>Image</th>
+      <th>Name</th>
+      <th>Url</th>
+      <th></th>
+      <th>&nbsp;</th>
+    </tr>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.position %></td>
+        <td><%= image.name %></td>
+        <td  class="center"><%= status_tag(image.visible) %></td>
+        
+        <td  class="actions">
+          <%= link_to("Show", {:action => 'show', :id => image.id}, :class => 'action show') %>
+          <%= link_to("Edit", {:action => 'edit', :id => image.id}, :class => 'action edit') %>
+          <%= link_to("Delete",{:action => 'delete', :id => image.id}, :class => 'action delete') %>
+        </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

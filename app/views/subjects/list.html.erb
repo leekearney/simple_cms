@@ -1,5 +1,6 @@
 <% @page_title = "Subjects List" %>
 
+<%= link_to("<<Back to Admin", {:controller => "access", :action => 'index'}, :class =>'back-link') %>
 <div class="subject list">
 	<h2>Subject</h2>
 
@@ -9,6 +10,7 @@
 		<tr class="header">
 			<th>&nbsp;</th>
 			<th>Subject</th>
+
 			<th>Visible</th>
 			<th>Pages</th>
 			<th>Actions</th>
@@ -30,4 +32,5 @@
 		</table>
 	</div>
 
+<%= link_to("Logout", :action => 'logout') %>
 			

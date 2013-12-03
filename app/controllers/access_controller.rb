@@ -1,5 +1,5 @@
 class AccessController < ApplicationController
- layout 'admin'
+ layout 'public'
 
   before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
 
@@ -10,7 +10,9 @@ class AccessController < ApplicationController
   end
 
   def menu
+   
   end
+
 
   def login
   end

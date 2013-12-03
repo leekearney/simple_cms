@@ -1,0 +1,43 @@
+<% @page_title = "Show image: #{@image.name}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="image show">
+  <h2>Show image</h2>
+
+  <table summary="image detail view">
+    <tr>
+      <th>Page ID</th>
+      <td><%= @image.page_id %></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td><%= @image.name %></td>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <td><%= @image.position %></td>
+    </tr>
+    <tr>
+      <th>Visible?</th>
+      <td><%= @image.visible ? 'true' : 'false' %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @image.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @image.updated_at %></td>
+    </tr>
+    <tr>
+      <th>Content Type</th>
+      <td><%= @image.content_type %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= @image.content %></td>
+    </tr>
+  </table>
+  
+</div>

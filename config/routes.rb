@@ -1,16 +1,11 @@
 SimpleCms::Application.routes.draw do
-  
-  get "admin_users/list"
+ 
+  get "images/show"
 
-  get "admin_users/new"
-
-  get "admin_users/edit"
-
-  get "admin_users/delete"
-
-  root :to => "demo#index"
+  root :to => "public#index"
   
   match 'admin', :to => 'access#menu'
+  match 'show/:id', :to => 'public#show'
   
   #get "demo/index"
 

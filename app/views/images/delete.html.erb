@@ -1,0 +1,19 @@
+<% @page_title = "Delete image: #{@image.name}" %>
+
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+
+<div class="image delete">
+  <h2>Delete image</h2>
+  
+  <%= form_for(:image, :url => {:action => 'destroy', :id => @image.id}) do |f| -%>
+
+    <p>Are you sure you want to permanently delete this image?</p>
+  
+    <p class="reference-name"><%= @image.name %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag("Delete Image") %>
+    </div>
+    
+  <% end %>
+</div>

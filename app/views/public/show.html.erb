@@ -1,0 +1,19 @@
+<h2><%= @page.name %></h2>
+
+
+<% @page.sections.visible.sorted.each do |section| %>
+	<div class="section">
+		<% case section.content_type
+		when 'HTML' %>
+			<p style="color: orange;"><%= raw(sanitize(section.content, :tags => ['strong', 'em', 'a'])) %></p>
+		<% when 'text' %>
+			<p style="color: green;"><%= section.content %></p>
+		<% end %>
+	</div>
+<% end %>
+
+<%# @page.images.visible.sorted.each do |image| %>
+  <div class="image">
+  	<%= image_tag 'http://r-ec.bstatic.com/images/hotel/square128/530/5303934.jpg' %>
+  </div>
+<%# end %>

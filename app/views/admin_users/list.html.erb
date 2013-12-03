@@ -1,29 +1,32 @@
 <% @page_title = "Admin Users List"%>
 
+
+<%= link_to("<<Back to Menu", {:controller => 'access', :action => 'menu'}, :class =>'back-link') %>
+
 <div class="user list">
 	<h2>Admin Users</h2>
 
 	<%= link_to("Add New Admin User", {:action => 'new'}, :class => 'action new') %>
 
-	<div><%= pluralize(@admin_users.size, 'admin user') %> found</div>
+	<div><%= pluralize(@admin_users.size, 'user') %> found</div>
 
-	<table class="listing" summary="admin user list">
-		<tr>
-			<th>Username</th>
-			<th>name</th>
-			<th>Email</th>
-			<th>Actions</th>
-		</tr>
-		<% @admin_users.each do |admin_user| %>
-	    <tr> class="<%= cycle('odd', 'even') %>">
-			<td><%= admin_user.username %></td>
-			<td><%= admin_user.name %></td>
-			<td><%= mail_to(admin_user.email) %></td>
-			<td  class="actions">
-				<%= link_to("Edit", {:action => 'edit', :id => admin_user.id}, :class => 'action edit') %>
-				<%= link_to("Delete", {:action => 'delete', :id => admin_user.id}, :class => 'action delete') %>
-			</td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
+        <table class="listing" summary="Users list">
+            <tr class="header">
+              <th>Name</th>
+              <th>Username</th>
+              <th>Email</th>
+            </tr>
+            <% @admin_users.each do |admin_user| %>
+            <tr class="<%= cycle('odd', 'even') %>">
+              <td><%= admin_user.first_name %></td>
+              <td><%= admin_user.username %></td>
+              <td><%= admin_user.email %></td>
+              <td class="actions">
+                <%= link_to("Show", {:action => 'show', :id => admin_user.id}, :class => 'action show') %>
+                <%= link_to("Edit", {:action => 'edit', :id => admin_user.id}, :class => 'action edit') %>
+                <%= link_to("Delete", {:action => 'delete', :id => admin_user.id}, :class => 'action delete') %>
+              </td>
+            </tr>
+            <% end %>
+        </table>
+</div>

@@ -19,24 +19,27 @@ class PagesController < ApplicationController
 
 	def new
 		@page = Page.new(:subject_id => @subject.id)
-		@page_count = Page.count + 1
+		@page_count = @subject.pages.size + 1
 		@subjects = Subject.order('position ASC')
 
 	end
 
 	def create
+
+		new_position = params[:page].delete(:position)
 		#instantiste a new ojject using form paramaters
 		@page = Page.new(params[:page])
 
 		#save the object
 		if @page.save
+			@page.move_to_position(new_position)
 
 		#if save succeeds, redirect to the list action
 		flash[:notice] = "Page created."
 		redirect_to(:action => 'list', :subject_id => @page.subject_id)
 	else
 		#if save fails, redisplay the form so user can fix problems
-		@page_count = Page.count + 1
+		@page_count = @subject.pages.size + 1
 		@subjects = Subject.order('position ASC')
 		render('new')
 	end
@@ -54,14 +57,15 @@ def update
 		@page = Page.find(params[:id])
 
 		#save the object
+		new_position = params[:page].delete(:position)
 		if @page.update_attributes(params[:page])
-
+		@page.move_to_position(new_position)
 		#if save succeeds, redirect to the list action
 		flash[:notice] = "Page Updated."
 		redirect_to(:action => 'show', :id => @page.id, :subject_id => @page.subject_id)
 	else
 		#if save fails, redisplay the form so user can fix problems
-		@page_count = Page.count
+		@page_count = @subject.pages.size
 		@subjects = Subject.order('position ASC')
 		render('edit')
 	end
@@ -72,8 +76,9 @@ def delete
 	end
 
 def destroy
-		@page = Page.find(params[:id])
-		@page.destroy
+		page = Page.find(params[:id])
+		page.move_to_position(nil)
+		page.destroy
 		flash[:notice] = "Page Destroyed."
 		redirect_to(:action => 'list', :subject_id => @subject.id)
 

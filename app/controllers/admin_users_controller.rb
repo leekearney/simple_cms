@@ -9,6 +9,10 @@ class AdminUsersController < ApplicationController
   	render('list')
   end
 
+  def admin
+
+  end
+
 
   def list
   	@admin_users = AdminUser.sorted
@@ -49,7 +53,7 @@ class AdminUsersController < ApplicationController
   def destroy
   	AdminUser.find(params[:id]).destroy
     flash[:notice] = "Admin user destroyed."
-    redirect_to(:action => list)
+    redirect_to(:action => 'list')
   end
 
 end

@@ -1,5 +1,9 @@
+require 'position_mover'
 class Section < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+  include PositionMover
+
+   #attr_accessible :title, :body
   belongs_to :page
   has_many :section_edits
   has_many :editors, :through => :section_edits, :class_name => "AdminUser"
@@ -14,6 +18,12 @@ class Section < ActiveRecord::Base
 
   scope :visible, where(:visible => true)
   scope :invisible, where(:visible => false)
-  scope :sorted, order('subjects.position ASC')
+  scope :sorted, order('sections.position ASC')
+
+private
+
+def position_scope
+  "sections.page_id = #{page_id.to_i}"
+end
 
 end
